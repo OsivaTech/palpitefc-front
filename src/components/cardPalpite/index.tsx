@@ -1,13 +1,14 @@
-import Ball from "../../../public/assets/ball.svg"
-import { useEffect, useState } from "react"
-import style from "./style.module.css"
+import moment from "moment"
 import Image from "next/image"
-import CardSkeleton from "../skeleton"
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
 import Api from "src/providers/http/api"
 import { objPalpiteType } from "src/types/objPalpiteType"
-import { toast } from "react-toastify"
-import timeBranco from "/public/assets/assets/clubes/branco.png"
+import Ball from "../../../public/assets/ball.svg"
 import ModalClassificacao from "../modalClassificacao"
+import CardSkeleton from "../skeleton"
+import style from "./style.module.css"
+import timeBranco from "/public/assets/assets/clubes/branco.png"
 
 function CardPalpite() {
 
@@ -70,10 +71,10 @@ function CardPalpite() {
         }
 
         const { horario } = objPalpite
-        const dataDoJogo = new Date(Date.parse(horario));
-        const horaAtual = new Date();
+        let dataJogo = moment().format(horario)
+        let dateNow = moment().format();
 
-        if (dataDoJogo <= horaAtual) {
+        if (dateNow >= dataJogo) {
             // O jogo já começou ou está em andamento, então não pode enviar o palpite
             return toast.error('Jogo já começou ou está em andamento, você não pode enviar um palpite')
         } else {
@@ -95,11 +96,11 @@ function CardPalpite() {
     }
 
     function dinamicId(data: string): boolean {
-        const banco = new Date(data).getTime();
-        const atual = new Date().getTime();
+        const banco = moment().format(data);
+        const atual = moment().format();
+        console.log("metodo:", banco, "\n atual: ", atual)
         return banco < atual;
     }
-
 
     function handlerImage(name: string) {
         console.log(name)
