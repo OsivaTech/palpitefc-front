@@ -25,8 +25,8 @@ function fetchApi():ApiType {
     return {
 
         get: async (url: string, object?: any): Promise<JSON | any> => {
-        
-            const response = await fetch(url + `${ object ? `?${new URLSearchParams(object)}` : ''}`, {
+
+            const response = await fetch(new URL(url, process.env.NEXT_PUBLIC_API_HOST) + `${ object ? `?${new URLSearchParams(object)}` : ''}`, {
                 method: 'GET',
                 mode: 'cors',
                 headers: {
@@ -40,7 +40,7 @@ function fetchApi():ApiType {
         
         post: async (url: string, object: any): Promise<JSON | any> => {
                 
-            const response = await fetch(url, {
+            const response = await fetch(new URL(url, process.env.NEXT_PUBLIC_API_HOST), {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -57,7 +57,7 @@ function fetchApi():ApiType {
         
         delete: async (url: string, object?: any): Promise<JSON | any> => {
                 
-            const response = await fetch(url + `${ object ? `?${new URLSearchParams(object)}` : ''}`, {
+            const response = await fetch(new URL(url, process.env.NEXT_PUBLIC_API_HOST) + `${ object ? `?${new URLSearchParams(object)}` : ''}`, {
                 method: 'DELETE',
                 mode: 'cors',
                 headers: {
@@ -70,7 +70,7 @@ function fetchApi():ApiType {
     
         auth: async (url: string, object: any,): Promise<JSON | any> => {
     
-            const response = await fetch(url, {
+            const response = await fetch(new URL(url, process.env.NEXT_PUBLIC_API_HOST), {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
