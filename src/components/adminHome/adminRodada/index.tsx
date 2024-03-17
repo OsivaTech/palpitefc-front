@@ -26,7 +26,7 @@ function RodadaComponent() {
 
     const [width, setWidth] = useState<number>(0)
 
-    const [showAlert, setShowAlert] = useState({show: false, index: NaN });
+    const [showAlert, setShowAlert] = useState({ show: false, index: NaN });
 
     const [resalert, setResalert] = useState(false);
 
@@ -131,7 +131,7 @@ function RodadaComponent() {
     }
 
     function convertToISODateTime(datetimeLocalValue: any) {
-        if(!datetimeLocalValue) return false
+        if (!datetimeLocalValue) return false
         const date = new Date(datetimeLocalValue);
         const year = date.getFullYear();
         const month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -144,7 +144,7 @@ function RodadaComponent() {
     }
 
     function transformaString(str: string) {
-        let newS:string = ''
+        let newS: string = ''
         let dia
         let mes
         let hora
@@ -155,20 +155,24 @@ function RodadaComponent() {
         hora = newS.slice(5, newS.length - 3)
 
         return `${dia}/${mes} - ${hora}`
-      }
-      
+    }
+
 
     function handlerImage(name: string) {
+        console.log(name)
+        if (name.startsWith('http')) {
+            return name
+        }
         name = name.replace(/\s+/g, "").replace(/-/g, "")
         return `/assets/assets/clubes/${name.replace(/\s+/g, "").charAt(0).toUpperCase()}${name.slice(1)}.png`
     }
 
     function aletRes(a: boolean) {
         console.log(a)
-        if(a){
+        if (a) {
             handlerEdit(showAlert.index)
         }
-        setShowAlert({show:false, index:NaN})
+        setShowAlert({ show: false, index: NaN })
     }
 
     const customStyles = {
@@ -202,8 +206,8 @@ function RodadaComponent() {
                         })}
                     </select>
                     <div className={style.newRound}>
-                        <button className={style.buttonAdd} onClick={() => addGame(ligaSelecionada.id)} 
-                            disabled={!ligaSelecionada.id || !isNaN(editar)} style={!ligaSelecionada.id || !isNaN(editar) ? {opacity: 0.5} : {opacity: 1}}>
+                        <button className={style.buttonAdd} onClick={() => addGame(ligaSelecionada.id)}
+                            disabled={!ligaSelecionada.id || !isNaN(editar)} style={!ligaSelecionada.id || !isNaN(editar) ? { opacity: 0.5 } : { opacity: 1 }}>
                             Nova rodada
                         </button>
                     </div>
@@ -245,7 +249,7 @@ function RodadaComponent() {
                                     <li key={key} className={style.liPalpite}>
                                         <div className={style.contentContainer}>
                                             <span className={style.spanPalpiteTime}>
-                                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" && game.firstTeam.image !== undefined ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
                                                 {
                                                     editar !== key ?
                                                         <p className={style.nomeTimeCard}>
@@ -266,7 +270,7 @@ function RodadaComponent() {
                                                             options={teams.map((team, index) => ({ value: team.id, label: team.name }))}
                                                             onChange={(selectedOption) => handlerGameFirst(selectedOption && selectedOption.value, key, 0)}
                                                         />
-                                                }   
+                                                }
                                             </span>
                                             <div className={style.spanPalpiteX}>
                                                 <p>X</p>
@@ -277,7 +281,7 @@ function RodadaComponent() {
                                                 }
                                             </div>
                                             <span className={style.spanPalpiteTime}>
-                                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" && game.firstTeam.image !== undefined ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
                                                 {
                                                     editar !== key ?
                                                         <p className={style.nomeTimeCard}>

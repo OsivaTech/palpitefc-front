@@ -47,6 +47,10 @@ function PosicaoComponent() {
     }, [])
 
     function handlerImage(name: string) {
+        console.log(name)
+        if (name.startsWith('http')) {
+            return name
+        }
         name = name.replace(/\s+/g, "").replace(/-/g, "")
         return `/assets/assets/clubes/${name.replace(/\s+/g, "").charAt(0).toUpperCase()}${name.slice(1)}.png`
     }
@@ -84,7 +88,7 @@ function PosicaoComponent() {
     }
 
     async function saveTeamChampionship(index: any) {
-        if(!teamsPositions[index].teamId) {
+        if (!teamsPositions[index].teamId) {
             const getTeamsPositions = await Api.get('/api/auth/championshipTeamPoints')
             setTeamsPositions(getTeamsPositions)
             setEdit(NaN)
@@ -99,8 +103,8 @@ function PosicaoComponent() {
             points: 0
         }
         const response = await Api.post('/api/auth/championshipTeamPoints', body)
-        // if (response?.id) toast.success('Jogo Salvo com sucesso!')
-        // if (!response?.id) toast.error('Houve um problema ao salvar o jogo')
+        if (response?.id) toast.success('Jogo Salvo com sucesso!')
+        if (!response?.id) toast.error('Houve um problema ao salvar o jogo')
         const getTeamsPositions = await Api.get('/api/auth/championshipTeamPoints')
         setTeamsPositions(getTeamsPositions)
         setEdit(NaN)
@@ -112,7 +116,7 @@ function PosicaoComponent() {
         let response;
         for (const teamPosition of teamsPositions) {
             if (teamPosition.championshipsId == ligaSelecionada.id) {
-                if(teamPosition.edit) {
+                if (teamPosition.edit) {
                     const body = {
                         id: teamPosition.id,
                         teamId: teamPosition.teamId,
@@ -124,8 +128,8 @@ function PosicaoComponent() {
                 }
             }
         }
-        // if (response.id) toast.success('Jogo Salvo com sucesso!')
-        // if (!response.id) toast.error('Houve um problema ao salvar o jogo')
+        if (response.id) toast.success('Jogo Salvo com sucesso!')
+        if (!response.id) toast.error('Houve um problema ao salvar o jogo')
         const getTeamsPositions = await Api.get('/api/auth/championshipTeamPoints')
         setTeamsPositions(getTeamsPositions)
         setEditarPosicao(false)
@@ -197,27 +201,27 @@ function PosicaoComponent() {
                                     editarPosicao ?
                                         <input value={teamPosition.position || 0} onChange={(event) => handleInputChange(event, key, 0)} className={style.inputPalpite}></input>
                                         :
-                                        <label style={{width: '19px'}}>{teamPosition?.position}</label>
+                                        <label style={{ width: '19px' }}>{teamPosition?.position}</label>
                                 }
-                                <Image className={style.imgPalpite} src={teamPosition?.team && (teamPosition?.team?.name) ? handlerImage(teamPosition?.team?.name) : timeBranco} width={50} height={50} alt="" />
+                                <Image className={style.imgPalpite} src={teamPosition?.team && (teamPosition?.team?.name) ? handlerImage(teamPosition?.team?.image !== "" && teamPosition?.team?.image !== undefined ? teamPosition?.team?.image : teamPosition?.team?.name) : timeBranco} width={50} height={50} alt="" />
                                 {
                                     editar !== key ?
                                         <label>{teamPosition?.team?.name}</label>
                                         :
-                                        <Select 
-                                        styles={customStyles}
-                                        placeholder="Selecione um time"
-                                        onChange={(event) => handlerTeam(event && event.value, key, 0)}
-                                        options={teams.map((team, index) => ({value:team.name, label:team.name }))}
+                                        <Select
+                                            styles={customStyles}
+                                            placeholder="Selecione um time"
+                                            onChange={(event) => handlerTeam(event && event.value, key, 0)}
+                                            options={teams.map((team, index) => ({ value: team.name, label: team.name }))}
                                         />
-                                        // <select onChange={(event) => handlerTeam(event.target.value, key, 0)} className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" style={{ width: '70%' }}>
-                                        //     <option selected={false} value={''} >Selecione um time</option>
-                                        //     {teams.map((team, index) => {
-                                        //         return (
-                                        //             <option value={team.name} key={index}>{team.name}</option>
-                                        //         )
-                                        //     })}
-                                        // </select>
+                                    // <select onChange={(event) => handlerTeam(event.target.value, key, 0)} className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" style={{ width: '70%' }}>
+                                    //     <option selected={false} value={''} >Selecione um time</option>
+                                    //     {teams.map((team, index) => {
+                                    //         return (
+                                    //             <option value={team.name} key={index}>{team.name}</option>
+                                    //         )
+                                    //     })}
+                                    // </select>
                                 }
                                 {
                                     editarPosicao ?

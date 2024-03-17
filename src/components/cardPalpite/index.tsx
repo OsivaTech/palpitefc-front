@@ -30,14 +30,14 @@ function CardPalpite() {
                 Api.get('/api/championship'),
                 Api.get('/api/game'),
             ]);
-            setGames(games); setChampionships(championships);            
+            setGames(games); setChampionships(championships);
             // setLoading(false);
         })()
     }, [])
 
     useEffect(() => {
-            const preference = localStorage.getItem(prefer)
-            setPrefer(preference)
+        const preference = localStorage.getItem(prefer)
+        setPrefer(preference)
     }, [])
 
     useEffect(() => {
@@ -84,11 +84,11 @@ function CardPalpite() {
         }
     }
 
-    async function attListFunc(){
-            const [championships, games] = await Promise.all([
-                Api.get('/api/championship'),
-                Api.get('/api/game'),
-            ]);
+    async function attListFunc() {
+        const [championships, games] = await Promise.all([
+            Api.get('/api/championship'),
+            Api.get('/api/game'),
+        ]);
         setGames(games); setChampionships(championships);
         setGamesExhibition(0)
         toast.success(`Lista de jogos atualizada!`)
@@ -137,7 +137,7 @@ function CardPalpite() {
     }, []);
 
     function transformaString(str: string) {
-        let newS:string = ''
+        let newS: string = ''
         let dia
         let mes
         let hora
@@ -148,13 +148,13 @@ function CardPalpite() {
         hora = newS.slice(5, newS.length - 3)
 
         return `${dia}/${mes}  ${hora}`
-      }
+    }
     //MODAL DE CLASSIFICACAO
     const [displayModal, setDisplayModal] = useState(false)
     const toggle = () => {
         setDisplayModal(!displayModal)
     }
-      const clubes = []
+    const clubes = []
 
     // function recebeIndex(x: any){
     //     Api.post('/api/auth/team', {team: {name: `${x}`}})
@@ -173,21 +173,21 @@ function CardPalpite() {
     return (
         <div className={style.bodyPalpite}>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '1rem 1rem 0rem 1rem', boxSizing: 'border-box' }}>
-                <ul className={style.listaLigas} style={{flexWrap: 'wrap'}}>
+                <ul className={style.listaLigas} style={{ flexWrap: 'wrap' }}>
                     <>
-                    {
-                        championships.map((liga: any, index: any) => (
-                            <li key={index} className={style.listaLigaLI} onClick={() => setGamesExhibition(liga.id)} style={{order:`-${index}`}}>{liga.name}</li>
-                        ))
-                    }
+                        {
+                            championships.map((liga: any, index: any) => (
+                                <li key={index} className={style.listaLigaLI} onClick={() => setGamesExhibition(liga.id)} style={{ order: `-${index}` }}>{liga.name}</li>
+                            ))
+                        }
                     </>
-                    <div className="flex" style={{marginLeft: 'auto'}}>
-                        <button onClick={()=>toggle()} className="bg-white hover:bg-gray-100 text-gray-800 my-5 px-4 shadow">
-                          Classificação
+                    <div className="flex" style={{ marginLeft: 'auto' }}>
+                        <button onClick={() => toggle()} className="bg-white hover:bg-gray-100 text-gray-800 my-5 px-4 shadow">
+                            Classificação
                         </button>
                         <button type="button" className={style.btnAttList} onClick={() => attListFunc()}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                <path d="M89.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L370.3 160H320c-17.7 0-32 14.3-32 32s14.3 32 32 32H447.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L398.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C57.2 122 39.6 150.7 28.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM23 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L109.6 352H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H32.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/>
+                                <path d="M89.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L370.3 160H320c-17.7 0-32 14.3-32 32s14.3 32 32 32H447.5c0 0 0 0 0 0h.4c17.7 0 32-14.3 32-32V64c0-17.7-14.3-32-32-32s-32 14.3-32 32v51.2L398.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C57.2 122 39.6 150.7 28.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM23 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1V448c0 17.7 14.3 32 32 32s32-14.3 32-32V396.9l17.6 17.5 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.7c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L109.6 352H160c17.7 0 32-14.3 32-32s-14.3-32-32-32H32.4c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z" />
                             </svg>
                         </button>
                     </div>
@@ -213,12 +213,12 @@ function CardPalpite() {
                                     {championships.filter((campeonato: any) => campeonato.id === game.championshipId).map((campeonato: any) => campeonato.name)}
                                 </span>
                                 <p className={style.pPalpite}>
-                                    {game.start ? transformaString(game.start): '00/00/0000, 00:00:00'}
+                                    {game.start ? transformaString(game.start) : '00/00/0000, 00:00:00'}
                                 </p>
                             </div>}
                         <div className={!unique ? style.contentContainerMult : style.contentContainer}>
                             <span className={style.spanPalpiteTime}>
-                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" && game.firstTeam.image !== undefined ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
                                 <p className={style.nomeTimeCard}>
                                     {game.firstTeam.name}
                                 </p>
@@ -227,12 +227,12 @@ function CardPalpite() {
                             <div className={style.spanPalpiteX}>
                                 <p>X</p>
                                 {unique && <p className={style.pPalpiteUnique}>
-                                    {game.start ? transformaString(game.start): '00/00/0000, 00:00:00'}
+                                    {game.start ? transformaString(game.start) : '00/00/0000, 00:00:00'}
                                 </p>}
                             </div>
                             <input type='text' pattern="\d{1,2}" placeholder="0" name="visitante" onChange={handleVisitante} onInput={(e: any) => { e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 2); }} className={style.inputPalpite} />
                             <span className={style.spanPalpiteTime}>
-                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.image !== "" ? game.secondTeam.image : game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.image !== "" && game.firstTeam.image !== undefined ? game.secondTeam.image : game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
                                 <p className={style.nomeTimeCard}>
                                     {game.secondTeam.name}
                                 </p>
@@ -243,7 +243,7 @@ function CardPalpite() {
                 )
                 )}
             </ul>
-            {displayModal && <ModalClassificacao display={displayModal} toggle={toggle}/>}
+            {displayModal && <ModalClassificacao display={displayModal} toggle={toggle} />}
         </div>
     )
 }
