@@ -102,6 +102,10 @@ function CardPalpite() {
 
 
     function handlerImage(name: string) {
+        console.log(name)
+        if (name.startsWith('http')) {
+            return name
+        }
         name = name.replace(/\s+/g, "").replace(/-/g, "")
         return `/assets/assets/clubes/${name.replace(/\s+/g, "").charAt(0).toUpperCase()}${name.slice(1)}.png`
     }
@@ -214,7 +218,7 @@ function CardPalpite() {
                             </div>}
                         <div className={!unique ? style.contentContainerMult : style.contentContainer}>
                             <span className={style.spanPalpiteTime}>
-                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
                                 <p className={style.nomeTimeCard}>
                                     {game.firstTeam.name}
                                 </p>
@@ -228,7 +232,7 @@ function CardPalpite() {
                             </div>
                             <input type='text' pattern="\d{1,2}" placeholder="0" name="visitante" onChange={handleVisitante} onInput={(e: any) => { e.target.value = e.target.value.replace(/[^0-9]/g, "").slice(0, 2); }} className={style.inputPalpite} />
                             <span className={style.spanPalpiteTime}>
-                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.image !== "" ? game.secondTeam.image : game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
                                 <p className={style.nomeTimeCard}>
                                     {game.secondTeam.name}
                                 </p>
