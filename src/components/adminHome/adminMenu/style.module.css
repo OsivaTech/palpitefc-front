@@ -1,0 +1,39 @@
+.menu {
+        color: white;
+        grid-area: menu;
+        background: linear-gradient(to right, #126e51, #24a57c);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+}
+
+.menu a {
+        color: #fff;
+        font-size: 0.7rem;
+        text-decoration: none;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        padding-left: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+}
+
+.menu a:hover {
+        background: #24a57c;
+        transition: all 0.5s 0s ease;
+
+}
+.exitIcon {
+        padding-left: 10px;
+        height: 1rem;
+}
+@media (max-width: 500px) {
+        .menu {
+                position: absolute;
+                bottom: 0;
+                height: calc(100%);
+                width: 7rem;
+                z-index: 99;
+        }
+}

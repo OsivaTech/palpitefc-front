@@ -1,0 +1,150 @@
+.jogo {
+    background: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+}
+.title h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.title h3 {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgb(61, 62, 63);
+}
+.title select {
+    font-size: 1.3rem;
+    max-width: 20%;
+    min-width: 200px;
+    background-color: white;
+    border-bottom: black 1px solid;
+    margin-right: 4.5rem;
+}
+@media(max-width:500px) {
+    .jogo {
+        gap: 3%;
+        padding: 10px;
+    }
+    .title h1, .title h3 {
+        font-size: 0.7rem !important;
+    }
+    .title select {
+        min-width: 50px;
+        margin: 0;
+        font-size: 0.7rem;
+        max-width: unset;
+    }
+    .buttonAdd {
+        font-size: 0.6rem !important;
+        padding: 0.3rem 0.4rem !important;
+    }
+}
+
+.newRound {
+    right: 0;
+    bottom: 5px;
+}
+.buttonAdd {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 0.7rem;
+    border-radius: 20px;
+    background: #24a57c;
+    color: white;
+}
+.disabled {
+    opacity: 0.5;
+}
+
+.ulPalpite {
+    transition:all 0.5s 0s ease;
+    width: 100%;
+}
+
+.liPalpite {
+    margin-bottom: 15px;
+    width: 50%;
+    position: relative;
+    gap: 10px;
+    align-items: center;
+    display: flex;
+    border-width: 0.1px;
+    border-image: linear-gradient(to right,rgba(0, 0, 0, 0), rgb(231, 226, 226), rgba(0, 0, 0, 0)) 1;   
+}
+
+.pts {
+    position: absolute;
+    right: 0;
+}
+
+.acao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.acaoEditar {
+    height: 0.8rem;
+}
+
+@media(max-width: 500px) {
+    .acao {
+        gap: 0.5rem;
+    }
+    .acao button {
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .acaoEditar {
+        height: 0.6rem;
+    }
+}
+.buttonEditar {
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 10px;
+}
+.buttonExcluir {
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+}
+.buttonSalvar {
+    position: absolute;
+    right: -7px;
+    background-color: rgb(92, 231, 92);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.inputPalpite {
+    border-bottom: 1px solid  black;
+    width: 2rem;
+    text-align: center;
+}
+
+.inputPts{
+    position: absolute;
+    right: -7px;
+    border-bottom: 1px solid  black;
+    width: 2rem;
+    text-align: center;
+}
+.imgPalpite {
+    /* width: auto; */
+    width: 32px;
+    height: 2rem;
+    object-fit: contain;
+}

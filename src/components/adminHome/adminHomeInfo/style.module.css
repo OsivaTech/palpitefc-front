@@ -1,0 +1,73 @@
+.jogo {
+    position: fixed;
+    background: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+    position: relative;
+    width: 55%;
+    justify-content: space-between;
+}
+.title h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.title h3 {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgb(61, 62, 63);
+}
+.poll-container {
+    width: auto;
+    margin: 0 auto 0 0;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding-right: 10px;
+}
+
+.poll-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.poll-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.inputOption {
+    margin-bottom: 10px;
+    border-bottom: 1px solid;
+    white-space: nowrap;
+    min-width: 500px;
+}
+@media(max-width:500px) {
+    .inputOption {
+        min-width: 280px;
+        font-size: 12px;
+    }
+}
+
+.poll-submit-button {
+    background: rgb(92, 231, 92);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    margin-left: 5px;
+    z-index: 3;
+}

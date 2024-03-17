@@ -1,0 +1,81 @@
+.containerRanking {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem 1rem 1rem;
+}
+
+.cabecalhoRanking {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.814);
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.502);
+}
+
+.rankingContent {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.2rem 0rem 0.2rem 0rem;
+}
+
+.classification {
+    width: 1.3rem;
+    border-radius: 3px;
+    background: linear-gradient(to right, #126e51, #24a57c);
+    padding: 0.3rem;
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.nameUser {
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.points {
+    width: 2.5rem;
+    border-radius: 3px;
+    background: linear-gradient(to left, #126e51, #24a57c);
+    padding: 0.3rem;
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+    display: flex;
+    justify-content: center;
+}
+
+.btnDesempenho {
+    background: linear-gradient(to left, #126e51, #24a57c);
+    color: white;
+    font-weight: bolder;
+    font-size: 14px;
+    padding: 0.3rem;
+    border-radius: 5px;
+    margin-top: 0.6rem;
+}
+
+.btnDesempenho:hover {
+    background: linear-gradient(to right, #126e51, #24a57c);
+}
+
+.liDesempenho {
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to left, #126e51, #24a57c);
+    color: white;
+    font-weight: bolder;
+    font-size: 12px;
+    padding: 0.4rem;
+    border-radius: 5px;
+    margin-top: 0.6rem;
+}
+
+.liDesempenho h2 {
+    margin: 0px 3px 0px 3px;
+    color: white;
+}

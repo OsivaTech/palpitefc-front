@@ -1,0 +1,158 @@
+.header {
+    background: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+.title {
+    width: 100%;
+}
+.title h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.title h3 {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgb(61, 62, 63);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    font-weight:300;
+    border-radius: 15px;
+    background: #24a57c;
+}
+
+.table th {
+    /* border: 1px solid rgb(156, 151, 151); */
+    padding: 10px;
+    text-align: left;
+    font-size: 1rem;
+    color: white;
+    border-left: none;
+    border-right: none;
+}
+
+.table td {
+    border: 1px solid rgb(211, 204, 204);
+    padding: 10px;
+    text-align: left;
+    border-left: none;
+    border-right: none;
+    background: white;
+    font-size: 0.8rem;
+}
+
+.acaoEditar {
+    height: 1.2rem;
+}
+
+.buttonEditar {
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 10px;
+}
+.avatar {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.editUser {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form {
+    /* background-color: #eeee; */
+    display: flex;
+    /* padding: 10px; */
+    gap: 10px;
+    width: auto;
+    /* flex-wrap:wrap; */
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgb(211, 204, 204);
+}
+
+.form input {
+    width: 250px;
+    /* background-color: white; */
+    border: 1px solid rgb(211, 204, 204);
+    padding-left: 5px;
+}
+
+.form select {
+    text-align: center;
+    width: 250px;
+    background-color: white;
+    border: 1px solid rgb(211, 204, 204);
+}
+
+.form article {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    gap: 20px;
+    font-weight: 300;
+}
+.form span {
+    width: 85px;
+    text-align: end;
+}
+
+.titelForm {
+    border-bottom: 1px solid rgb(211, 204, 204);
+    text-align: center;
+    padding: 5px;
+    background: #24a57c;
+    color: white;
+    font-weight: bold;
+}
+
+.formButton {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.buttonAdd {
+    background-color: #24a57c;
+    color: white;
+    border-radius: 20px;
+    padding: 7px 20px;
+    color: white;
+    font-weight: bold;
+}
+.buttonCancelar {
+    font-weight: bold;
+    margin-right: 5px;
+    background-color: rgb(99, 96, 96);
+    color: white;
+    border-radius: 20px;
+    padding: 7px 20px;
+    color: white;
+}
+
+@media(max-width: 500px) {
+    .divTable {
+        min-height: 100vh;
+    }
+    .acaoEditar {
+        height: 0.8rem;
+    }
+}

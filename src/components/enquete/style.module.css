@@ -1,0 +1,80 @@
+.containerEnquete {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    min-height: 217px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.content span {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.75px;
+    line-height: 20px;
+    color: rgb(51, 51, 51);
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title button {
+    padding: 0px;
+    display: flex;
+    font-size: 13px;
+    font-weight: bold;
+    justify-content: flex-end;
+    color: #126e51;
+    cursor: pointer;
+}
+
+.content textarea {
+    border: 0.5px solid gray;
+    border-radius: 8px;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    color: black;
+    font-style: oblique;
+    resize: none;
+}
+
+.btnEnquete {
+    /* width: 100%; */
+    background: linear-gradient(to right, #126e51, #24a57c);
+    padding: 0.3rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.btnEnquete h4 {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btnEnquete h5 {
+    width: 100%;
+    transition: all 0.5s 0s ease;
+    color: rgba(0, 0, 0, 0.876);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btnEnquete:hover {
+    transition: all 0.5s 0s ease;
+    background: linear-gradient(to left, #126e51, #24a57c);
+}

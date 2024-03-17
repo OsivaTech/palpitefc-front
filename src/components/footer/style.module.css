@@ -1,0 +1,113 @@
+.footerSite {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to right, #126e51, #24a57c);
+    padding: 1rem;
+}
+
+.contentFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logoText {
+    margin-top: 2.4px;
+    margin-left: 5px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    font-style: oblique;
+    letter-spacing: 1px;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    color: #ffffff;
+}
+
+.spanFooter {
+    color: white;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    font-style: oblique;
+    letter-spacing: 1px;
+    font-size: 16px;
+}
+
+.ulRedes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px dashed white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    background: linear-gradient(to left, #126e51, #24a57c);
+}
+
+.ulRedes div {
+    margin-top: 0.2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+
+.titlePalpite {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.titlePalpiteMobile {
+    display: none;
+}
+
+.gitHub {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px dashed white;
+    border-radius: 5px;
+    background: linear-gradient(to right, #126e51, #24a57c);
+}
+
+.githubLink {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-content: center;
+}
+
+
+@media screen and (max-width: 750px) {
+
+    .footerSite {
+        flex-direction: column;
+    }
+
+    .titlePalpiteMobile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .titlePalpite {
+        display: none;
+    }
+
+    .contentFooter {
+        gap: 1rem;
+    }
+
+    .spanFooter {
+        font-size: 14px;
+    }
+}

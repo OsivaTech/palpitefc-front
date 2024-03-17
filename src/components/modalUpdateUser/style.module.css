@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
+
+.fecharModal {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.logoText {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    font-style: oblique;
+    letter-spacing: 1px;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    color: #126e51;
+    margin-top: 3px;
+}
+
+.formModal {
+    display: flex;
+    flex-direction: column;
+    max-height: 20rem;
+    overflow: auto;
+    padding-right: 0.5rem;
+    transition: all 0.3s 0s linear;
+}
+
+.formModal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.formModal::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #126e51, #24a57c);
+    border-radius: 4px;
+}
+
+.formModal::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.formModal span {
+    margin-bottom: 0.3rem;
+}
+
+.formModal input {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dadosComplementares {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    transition: all 0.3s 0s linear;
+}
+
+.dadosComplementares div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.dadosComplementares div input {
+    width: 100%;
+}
+
+.btnCadastroCompleto {
+    font-size: 12px;
+    flex-direction: row;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.btnOn {
+    margin-top: 1rem;
+    background: linear-gradient(to right, #126e51, #24a57c);
+    border-radius: 10px;
+    padding: 0.5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.btnOn:hover {
+    background: linear-gradient(to left, #126e51, #24a57c);
+}
+
+.modalNav {
+    margin-top: 0.5rem;
+    background: rgba(128, 128, 128, 0.241);
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.contentModal {
+    background: #fff;
+    border-radius: 10px;
+    width: 28rem;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px 1px #44637633;
+}
+
+@media screen and (max-width: 600px) {
+    .contentModal {
+        width: 90%;
+    }
+
+    .logoText {
+        font-size: 16px;
+    }
+
+    .dadosComplementares {
+        flex-direction: column;
+    }
+}

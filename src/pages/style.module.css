@@ -1,0 +1,26 @@
+.contentHome{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    
+}
+
+.contentSite{
+    display: flex; 
+    justify-content: space-evenly;
+    flex-direction: row; 
+    gap: 1rem; 
+    padding: 2rem;
+}
+
+@media screen and (max-width: 980px) {
+    .contentSite {
+        flex-direction: column-reverse;
+    }
+}
+
+/* @media screen and (max-width: 550px) {
+    .contentHome {
+        width: 100%;
+    }
+} */

@@ -1,0 +1,54 @@
+.homeAdmin{
+    /* z-index: -9; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 7% 1fr;
+    grid-template-columns: 0rem 1fr;
+    grid-template-areas:
+    "header header"
+    "menu content" ;
+    transition: grid-template-columns 1s ease;
+    grid-template-columns: 8rem 1fr;
+}
+.homeAdminHideMenu {
+    /* z-index: -9; */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 7% 1fr;
+    grid-template-columns: 8rem 1fr;
+    grid-template-areas:
+    "header header"
+    "menu content" ;
+    transition: grid-template-columns 1s ease;
+    grid-template-columns: 0rem 1fr;
+}
+.buttonMenu {
+    height: 2rem;
+}
+.divIconMenu{
+    position: absolute;
+    top: 2px;
+    left: 3%;
+    background: #24a57c;
+    cursor: pointer;
+    transition: all 0.5s 0s ease;   
+    padding: 5px 8px;
+    border-radius: 10%;
+}
+
+@media (max-width: 500px) {
+    .homeAdmin, .homeAdminHideMenu {
+        grid-template-columns: 0rem 1fr !important;
+        grid-template-rows: 5% 1fr;
+    }
+    .buttonMenu {
+        height: 1.5rem;
+    }
+    .divIconMenu{
+        top: 3px
+    }
+}

@@ -1,0 +1,24 @@
+.liPalpite {
+    height: 10rem;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-image: linear-gradient(to right,rgba(0, 0, 0, 0), rgb(231, 226, 226), rgba(0, 0, 0, 0)) 1;
+    padding: 1rem;
+    width: 100%;
+}
+
+.blogContainer {
+  min-width: 10rem;
+  min-height: 13.5rem;
+}
+
+@media screen and (max-width: 600px) {
+.blogContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+}

@@ -1,0 +1,346 @@
+.bodyPalpite {
+    box-shadow: 0 1px 3px 1px #44637633;
+    border-radius: 0.25rem;
+    height: 100%;
+    width: 60%;
+}
+
+#backgroundLiActive {
+    background: rgba(128, 128, 128, 0.079);
+    opacity: 0.6;
+}
+
+#backgroundLiActive button{
+    cursor: not-allowed;
+}
+
+#backgroundLiActiveNot {}
+
+.listaLigas {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.btnAttList {
+    cursor: pointer;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    margin-left: auto;
+}
+
+.btnAttList svg{
+    height: 1rem;
+    width: 1rem;
+} 
+
+.btnAttList:hover {
+      box-sizing: border-box;
+    background: rgb(189, 185, 185);
+    transition: all 0.8s 0s ease;
+    border-radius: 10px;
+}
+
+.listaLigaLI {
+    cursor: pointer;
+    padding: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listaLigaLI:hover {
+    box-sizing: border-box;
+    background: rgb(189, 185, 185);
+    transition: all 0.8s 0s ease;
+    border-radius: 10px;
+}
+
+.visaoJogos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.visaoJogos span {
+    font-size: 0.8rem;
+    padding-right: 0.5rem;
+}
+
+.uniqueVis {
+    border: 0.5px solid gray;
+    margin-right: 0.2rem;
+    cursor: pointer;
+}
+
+.multiplyVis {
+    border: 0.5px solid gray;
+    cursor: pointer;
+}
+
+.ulPalpite {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s 0s ease;
+    padding-top: 1rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #126e51 #24a57c;
+    height: 50.3rem;
+}
+
+.ulPalpite .btnPalpite {
+    margin: auto;
+    transition: all 0.8s 0s ease;
+    width: 30%;
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+    border-radius: 5px;
+    background: linear-gradient(to right, #126e51, #24a57c);
+}
+
+.ulPalpite::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ulPalpite::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #126e51, #24a57c);
+    border-radius: 4px;
+}
+
+.ulPalpite::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.liPalpite {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-width: 1px;
+    border-bottom-style: solid;
+    border-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(231, 226, 226), rgba(0, 0, 0, 0)) 1;
+}
+
+.contentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.inputPalpite {
+    border: 1px solid rgb(231, 226, 226);
+    border-radius: 5px;
+    width: 2rem;
+    height: 2.5rem;
+    background-color: #e4e4e4;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.inputPalpite::-webkit-outer-spin-button,
+.inputPalpite::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.inputPalpite::placeholder {
+    color: black;
+}
+
+/* Firefox */
+.inputPalpite[type=number] {
+    -moz-appearance: textfield;
+}
+
+.spanPalpiteX {
+    display: flex;
+    gap: 10px;
+    text-align: center;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pPalpiteUnique {
+    font-size: 0.7rem;
+}
+
+.pPalpite {
+    font-size: 0.9rem;
+}
+
+.spanPalpiteTime {
+    display: flex;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgPalpite {
+    padding-bottom: 5px;
+}
+
+/*_________________segunda condicao________________ */
+
+.ulPalpiteMult {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    height: 50.3rem;
+    scrollbar-width: thin;
+    scrollbar-color: #126e51 #24a57c;
+    gap: 1rem;
+}
+
+.ulPalpiteMult::-webkit-scrollbar {
+    width: 8px;
+}
+
+.ulPalpiteMult::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, #126e51, #24a57c);
+    border-radius: 4px;
+}
+
+.ulPalpiteMult::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.liPalpiteMult {
+    transition: all 0.3s 0s linear;
+    padding: 1rem;
+    max-width: 19rem;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-weight: 400;
+    box-shadow: 0 1px 3px 1px #44637633;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    background-size: cover;
+    justify-content: space-between;
+}
+
+.ulPalpiteMult .btnPalpite {
+    transition: all 0.8s 0s ease;
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+    border-radius: 5px;
+    background: linear-gradient(to right, #126e51, #24a57c);
+}
+
+.btnPalpiteOff {
+    width: 100%;
+    color: white;
+    font-size: 12px;
+    font-weight: bolder;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.titleCard {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.titleCardContent {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.titleCard span {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.nomeTimeCard {
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.contentContainerMult {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contentContainerMult .spanPalpiteTime {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainerMult .spanPalpiteX {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 980px) {
+    .bodyPalpite {
+        width: 100%;
+        order: 5;
+    }
+}
+
+@media screen and (max-width: 727px) {
+    .visaoJogos {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 727px) {
+    .listaLigas {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .listaLigas li {
+        /* width: 100px; */
+        font-size: 13px;
+        font-weight: bold;
+        border: 0.1px solid rgba(128, 128, 128, 0.384);
+        border-radius: 8px;
+        background: rgba(128, 128, 128, 0.082);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .bodyPalpite {
+        height: 35rem;
+    }
+
+    .ulPalpite {
+        height: 28.3rem;
+    }
+
+    .liPalpiteMult {
+        width: 16rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .ulPalpiteMult {
+        height: 73%;
+    }
+}

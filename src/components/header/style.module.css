@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
+
+.headerPai {
+    width: 100%;
+}
+
+.textHeaderFilho1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 33px;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    color: rgba(52, 213, 249, 0.97);
+    text-shadow: rgb(26, 0, 0) 3px 3px 4px;
+}
+
+.textHeaderFilho2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 23px;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+    color: rgba(52, 213, 249, 0.97);
+    text-shadow: rgb(26, 0, 0) 3px 3px 4px;
+}
+
+.banner {
+    box-shadow: 0 1px 1px 3px #44637633;
+    height: 8rem;
+    background: linear-gradient(75.7deg, rgb(34, 126, 34) 3.8%, rgb(99, 162, 17) 87.1%);
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+.closeBanner {
+    padding: 0.5rem;
+    color: black;
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.549);
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.close {
+    display: none;
+}
+
+.Header1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(to right, #126e51, #24a57c);
+    /* height: 5rem; */
+}
+
+.containerHeader {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.Header1 span {
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #e4e4e4;
+    border-radius: 8px;
+}
+
+.nomeExibir{
+    display: block;
+}
+
+.nomeOcultar{
+    display: none;
+}
+
+.Header1 span:hover {
+    background: #24a57c;
+    transition: all 0.5s 0s ease;
+}
+
+.imagemLogomarcaHeader + h6{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.imagemLogomarcaHeaderMobile {
+    display: none;
+}
+
+.imagemLogomarcaHeaderMobile + h6{
+    display: none;
+}
+
+.imgHeader {
+    width: 26rem;
+}
+
+.subHeader {
+    margin-top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: #383838;
+    background: linear-gradient(to right, #383838, #7c6e6e);
+    height: 5rem;
+    padding-bottom: 0.5rem;
+}
+
+.subHeader li {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #e4e4e4;
+    border-radius: 8px;
+    align-items: center;
+    gap: 5px;
+    min-width: 128px;
+}
+
+.subHeader li img {
+    width: 40px;
+    height: 40px;
+    /* background: white; */
+}
+
+.subHeader li:hover {
+    background: #605d5d;
+    transition: all 0.5s 0s ease;
+}
+
+@media screen and (max-width: 850px) {
+
+    .textHeaderFilho1 {
+        font-size: 20px;
+    }
+
+    .textHeaderFilho2 {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 727px) {}
+
+@media screen and (max-width: 600px) {
+
+    .Header1 {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .imagemLogomarcaHeaderMobile {
+        display: block;
+        width: 70%;
+        order: -1;
+        margin-bottom: -13px;
+    }
+
+    .imagemLogomarcaHeaderMobile + h6{
+        display: block;
+        margin-top: 0.5rem;
+        color: white;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: oblique;
+    }
+
+    .imagemLogomarcaHeader {
+        display: none;
+    }
+
+    .imagemLogomarcaHeader + h6{
+        display: none;
+    }
+
+    .containerHeader span:first-child {
+        background: linear-gradient(to right, #126e51, #24a57c);
+        padding: 0.3rem;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-top: 2px;
+    }
+
+    .containerHeader span:nth-child(3) {
+        background: linear-gradient(to left, #126e51, #24a57c);
+        padding: 0.3rem;
+        width: 102px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        margin-top: 2px;
+    }
+
+    .banner {
+        display: none;
+    }
+}

@@ -1,0 +1,108 @@
+.jogo {
+    background: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+}
+
+.title {
+    position: relative;
+    width: 100%;
+}
+.title h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.title h3 {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgb(61, 62, 63);
+}
+
+.newRound {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    font-size: 1rem;
+}
+
+.buttonAdd {
+    font-weight: bold;
+    padding: 0.5rem 0.7rem;
+    border-radius: 20px;
+    background: #24a57c;
+    color: white;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    font-weight:300;
+    border-radius: 15px;
+    background: #24a57c;
+}
+
+.table th {
+    /* border: 1px solid rgb(156, 151, 151); */
+    padding: 10px;
+    text-align: left;
+    font-size: 1rem;
+    color: white;
+    border-left: none;
+    border-right: none;
+}
+
+.table td {
+    border: 1px solid rgb(211, 204, 204);
+    padding: 10px;
+    text-align: left;
+    border-left: none;
+    border-right: none;
+    background: white;
+    font-size: 0.8rem;
+}
+
+.inputPalpite {
+    border: 1px solid #24a57c;
+    height: 3rem;
+    width: auto;
+}
+
+.acao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.acaoEditar {
+    height: 1.2rem;
+}
+
+.buttonEditar {
+    background-color: yellow;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.buttonExcluir {
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.buttonSalvar {
+    background-color: rgb(92, 231, 92);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media(max-width: 500px) {
+    .divTable {
+        min-height: 100vh;
+    }
+}

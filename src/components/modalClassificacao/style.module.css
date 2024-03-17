@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
+
+.fecharModal {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 0.5px solid #24a57c;
+    margin-bottom: 0.5rem;
+}
+
+.logoText {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bolder;
+    font-style: oblique;
+    letter-spacing: 1px;
+    font-size: 22px;
+    text-align: center;
+    letter-spacing: 1px;
+    word-spacing: 3px;
+    color: #126e51;
+    margin-top: 3px;
+}
+
+.contentModalBlog {
+    display: flex;
+    flex-direction: column;
+}
+
+.contentModalBlog h1 {
+    color: black;
+    font-weight: bold;
+}
+
+.contentModalBlog h6 {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    color: black;
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+}
+
+.contentModalBlog div {
+    color: black;
+    font-style: oblique;
+}
+
+.contentModal {
+    background: #fff;
+    border-radius: 10px;
+    width: 28rem;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px 1px #44637633;
+}
+
+.classificacao{
+    border-radius: 0.5rem;
+    border: 0.5px solid gray;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.classificacao > div {
+    width: 50%;
+    border-right: 0.5px solid gray;
+}
+
+.classificacao li{
+    border-bottom: 0.5px solid gray;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.classificacao li div{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.classificacao span {
+    font-size: 12px;
+}
+
+#g4 {
+    background-color: rgb(185, 241, 177);
+}
+
+.z4 {
+    background-color: rgb(241, 177, 177);
+}
+
+@media screen and (max-width: 600px) {
+    .contentModal {
+        width: 90%;
+    }
+
+    .logoText {
+        font-size: 16px;
+    }
+}
