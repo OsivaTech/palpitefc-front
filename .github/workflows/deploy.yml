@@ -1,0 +1,61 @@
+name: Deoploy front
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    env:
+      APP_NAME: ${{ vars.APP_NAME }}
+      APP_DIRECTORY: ${{ vars.INSTALLATION_DIR }}/${{ vars.APP_NAME }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create Directory
+        run: mkdir -p ${{ env.APP_DIRECTORY }}
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Next.js App
+        run: npx next build
+
+      - name: Copy files to app directory
+        run: yes | cp -rf . ${{ env.APP_DIRECTORY }}
+
+      - name: Create services directory
+        run: mkdir -p ~/.config/systemd/user/
+
+      - name: Create systemd service file
+        run: |
+          echo "[Unit]
+          Description=PalpiteFC Front
+
+          [Service]
+          WorkingDirectory=${{ env.APP_DIRECTORY }}
+          ExecStart=npx next start
+          Restart=always
+          RestartSec=10
+          KillSignal=SIGINT
+          SyslogIdentifier=${{ env.APP_NAME }}
+
+          [Install]
+          WantedBy=default.target" > ~/.config/systemd/user/${{ env.APP_NAME }}.service
+
+      - name: Start Service
+        run: |
+          export XDG_RUNTIME_DIR=/run/user/$(id -u)
+          systemctl --user daemon-reload
+          systemctl --user enable ${{ env.APP_NAME }}.service
+          systemctl --user restart ${{ env.APP_NAME }}.service
