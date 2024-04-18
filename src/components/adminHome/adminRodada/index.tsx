@@ -281,7 +281,7 @@ function RodadaComponent() {
                                                 }
                                             </div>
                                             <span className={style.spanPalpiteTime}>
-                                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" && game.firstTeam.image !== undefined ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.image !== "" && game.secondTeam.image !== undefined ? game.secondTeam.image : game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
                                                 {
                                                     editar !== key ?
                                                         <p className={style.nomeTimeCard}>
