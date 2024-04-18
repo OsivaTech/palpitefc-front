@@ -45,19 +45,6 @@ function HeaderPrincipal() {
 
     return (
         <header className={style.headerPai}>
-            <div className={!closeBan ? style.banner : style.close}>
-                <div className={style.textHeaderPai}>
-                    <h1 className={style.textHeaderFilho1}>
-                        Faça parte do nosso clube!
-                    </h1>
-                    <h2 className={style.textHeaderFilho2}>
-                        Cadastre-se agora e concorra a premios!
-                    </h2>
-                </div>
-                <div>
-                    <span className={style.closeBanner} onClick={() => setCloseBan(true)}>X</span>
-                </div>
-            </div>
             <div className={style.Header1}>
                 <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
                     <Image src={Logo} height={40} width={400} alt="palpite.com" className={style.imagemLogomarcaHeaderMobile} />
