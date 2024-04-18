@@ -44,7 +44,7 @@ jobs:
 
           [Service]
           WorkingDirectory=${{ env.APP_DIRECTORY }}
-          ExecStart=npx next start
+          ExecStart=npx next dev
           Restart=always
           RestartSec=10
           KillSignal=SIGINT
