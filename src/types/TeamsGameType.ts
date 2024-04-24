@@ -3,7 +3,7 @@ import { TeamType } from './TeamType';
 
 export interface TeamsGameType {
     id:         number;
-    gol:       number;
+    goal:       number;
     teamId:    number;
-    gameId:    number;
+    fixtureId:    number;
 }

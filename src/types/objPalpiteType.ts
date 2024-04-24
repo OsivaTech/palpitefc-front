@@ -3,6 +3,6 @@ export interface objPalpiteType {
     horario: string;
     mandante: string | number;
     visitante: string | number;
-    firstTeamId: string | number;
-    secondTeamId: string | number;
+    homeTeamId: string | number;
+    awayTeamId: string | number;
 }

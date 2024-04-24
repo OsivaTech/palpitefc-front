@@ -36,9 +36,9 @@ function RodadaComponent() {
             setIsLoading(true)
             const teams = await Api.get('/api/auth/team')
             setTeams(teams)
-            const championship = await Api.get('/api/auth/championship')
+            const championship = await Api.get('/api/auth/league')
             setLigas(championship);
-            const games = await Api.get('/api/auth/game')
+            const games = await Api.get('/api/auth/fixture')
             setGames(games)
             setIsLoading(false)
         })()
@@ -61,17 +61,17 @@ function RodadaComponent() {
         const body = {
             id: games[key].id
         }
-        const response = await Api.delete('/api/auth/game', body)
+        const response = await Api.delete('/api/auth/fixture', body)
         if (response.id) toast.success('Jogo excluído com sucesso!')
         if (!response.id) toast.error('Houve um problema ao excluir o jogo')
-        const game = await Api.get('/api/auth/game')
+        const game = await Api.get('/api/auth/fixture')
         setGames(game);
         setEdit(NaN);
         setIsLoading(false)
     };
 
     const saveGame = async (idLiga: number, index: number) => {
-        if (!games[index].firstTeam.id || !games[index].secondTeam.id) return toast.error('Selecione os times')
+        if (!games[index].homeTeam.id || !games[index].awayTeam.id) return toast.error('Selecione os times')
         if (String(convertToISODateTime(games[index].start)).includes('NaN')) return toast.error('Selecione a data e hora do jogo')
         setIsLoading(true)
         const body = {
@@ -79,13 +79,13 @@ function RodadaComponent() {
             name: 'jogo 2',
             championshipId: idLiga,
             start: convertToISODateTime(games[index].start),
-            firstTeam: { id: games[index].firstTeam.id, gol: 0 },
-            secondTeam: { id: games[index].secondTeam.id, gol: 0 }
+            firstTeam: { id: games[index].homeTeam.id, gol: 0 },
+            secondTeam: { id: games[index].awayTeam.id, gol: 0 }
         }
-        const response = await Api.post('/api/auth/game', body)
+        const response = await Api.post('/api/auth/fixture', body)
         if (response.id) toast.success('Jogo Salvo com sucesso!')
         if (!response.id) toast.error('Houve um problema ao salvar o jogo')
-        const game = await Api.get('/api/auth/game')
+        const game = await Api.get('/api/auth/fixture')
         setGames(game)
         setEdit(NaN)
         setIsLoading(false)
@@ -93,7 +93,7 @@ function RodadaComponent() {
 
     function handlerGameFirst(teamId: any, index: number, id: number) {
         if (!teamId || teamId == '') {
-            setGames([...games, games[index].firstTeam.id = '', games[index].firstTeam.name = ''])
+            setGames([...games, games[index].homeTeam.id = '', games[index].homeTeam.name = ''])
         } else {
             let teamName = ''
             teams.map((team, index) => {
@@ -103,13 +103,13 @@ function RodadaComponent() {
                     )
                 }
             })
-            setGames([...games, games[index].firstTeam.id = Number(teamId), games[index].firstTeam.name = teamName])
+            setGames([...games, games[index].homeTeam.id = Number(teamId), games[index].homeTeam.name = teamName])
         }
     }
 
     function handlerGameSecond(teamId: any, index: number, id: number) {
         if (!teamId || teamId == '') {
-            setGames([...games, games[index].secondTeam.id = '', games[index].secondTeam.name = ''])
+            setGames([...games, games[index].awayTeam.id = '', games[index].awayTeam.name = ''])
         } else {
             let teamName = ''
             teams.map((team, index) => {
@@ -119,12 +119,12 @@ function RodadaComponent() {
                     )
                 }
             })
-            setGames([...games, games[index].secondTeam.id = Number(teamId), games[index].secondTeam.name = teamName])
+            setGames([...games, games[index].awayTeam.id = Number(teamId), games[index].awayTeam.name = teamName])
         }
     }
 
     async function handlerEdit(index: number) {
-        if (editar && (!games[editar].firstTeam.id || !games[editar].secondTeam.id)) {
+        if (editar && (!games[editar].homeTeam.id || !games[editar].awayTeam.id)) {
             return toast.error('Selecione os times')
         }
         setEdit(index)
@@ -244,23 +244,23 @@ function RodadaComponent() {
                 <div>
                     <ul className={style.ulPalpite}>
                         {games.map((game, key) => {
-                            if (game.championshipId == ligaSelecionada.id)
+                            if (game.leagueId == ligaSelecionada.id)
                                 return (
                                     <li key={key} className={style.liPalpite}>
                                         <div className={style.contentContainer}>
                                             <span className={style.spanPalpiteTime}>
-                                                <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" && game.firstTeam.image !== undefined ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                                <Image className={style.imgPalpite} src={game.homeTeam && game.homeTeam.name ? handlerImage(game.homeTeam.image !== "" && game.homeTeam.image !== undefined ? game.homeTeam.image : game.homeTeam.name) : timeBranco} width={50} height={50} alt="" />
                                                 {
                                                     editar !== key ?
                                                         <p className={style.nomeTimeCard}>
-                                                            {game.firstTeam && game.firstTeam.name}
+                                                            {game.homeTeam && game.homeTeam.name}
                                                         </p>
                                                         :
                                                         // <select onChange={(event) => handlerGameFirst(event.target.value, key, 0)} className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" style={{ textAlign: 'center' }}>
                                                         //     <option selected={false} value={''} >Selecione um time</option>
                                                         //     {teams.map((team, index) => {
                                                         //         return (
-                                                        //             <option value={team.id} selected={game.firstTeam.name ? (team.id == game.firstTeam.id) : false} key={index}>{team.name}</option>
+                                                        //             <option value={team.id} selected={game.homeTeam.name ? (team.id == game.homeTeam.id) : false} key={index}>{team.name}</option>
                                                         //         )
                                                         //     })}
                                                         // </select>
@@ -281,18 +281,18 @@ function RodadaComponent() {
                                                 }
                                             </div>
                                             <span className={style.spanPalpiteTime}>
-                                                <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.image !== "" && game.secondTeam.image !== undefined ? game.secondTeam.image : game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                                <Image className={style.imgPalpite} src={game.awayTeam && game.awayTeam.name ? handlerImage(game.awayTeam.image !== "" && game.awayTeam.image !== undefined ? game.awayTeam.image : game.awayTeam.name) : timeBranco} width={50} height={50} alt="" />
                                                 {
                                                     editar !== key ?
                                                         <p className={style.nomeTimeCard}>
-                                                            {game.secondTeam && game.secondTeam.name}
+                                                            {game.awayTeam && game.awayTeam.name}
                                                         </p>
                                                         :
                                                         // <select onChange={(event) => handlerGameSecond(event.target.value, key, 1)} className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" style={{ textAlign: 'center' }}>
                                                         //     <option value={''}>Selecione um time</option>
                                                         //     {teams.map((team, index) => {
                                                         //         return (
-                                                        //             <option value={team.id} selected={game.secondTeam.name ? (team.id == game.secondTeam.id) : false} key={index} >{team.name}</option>
+                                                        //             <option value={team.id} selected={game.awayTeam.name ? (team.id == game.awayTeam.id) : false} key={index} >{team.name}</option>
                                                         //         )
                                                         //     })}
                                                         // </select>

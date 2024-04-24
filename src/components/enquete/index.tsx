@@ -12,7 +12,7 @@ function Enquete() {
 
     useEffect(() => {
         (async () => {
-            const res = await Api.get('/api/vote')
+            const res = await Api.get('/api/poll')
             setEnquete(res)
         })()
     }, [])

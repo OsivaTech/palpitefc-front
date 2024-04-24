@@ -19,9 +19,9 @@ const ModalClassificacao = ({ display, toggle }: any) => {
 
     useEffect(() => {
         (async () => {
-            const championship = await Api.get('/api/championship')
+            const championship = await Api.get('/api/league')
             setLigas(championship);
-            const getTeamsPositions = await Api.get('/api/championshipTeamPoints')
+            const getTeamsPositions = await Api.get('/api/standing')
             setAllTeams(getTeamsPositions)
         })()
     }, [])

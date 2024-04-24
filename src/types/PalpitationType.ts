@@ -2,12 +2,12 @@
 
 export interface PalpitationType {
     id?: number;
-    firstTeamId: number;
-    firstTeamGol: number;
+    homeTeamId: number;
+    homeTeamGol: number;
 
-    secondTeamId: number;
-    secondTeamGol: number;
+    awayTeamId: number;
+    awayTeamGol: number;
 
     userId: number;
-    gameId: number;
+    fixtureId: number;
 }

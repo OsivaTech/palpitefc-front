@@ -3,7 +3,7 @@
 export interface GameType {
     id?: number;
     name: string;
-    championshipId?: number;
+    leagueId?: number;
     start?:     Date;
     finished?: boolean;
 }

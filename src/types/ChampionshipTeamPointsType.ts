@@ -1,7 +1,7 @@
 export interface ChampionshipTeamPoints {
     id?: number;
     teamId?: number;
-    championshipId?: number;
+    leagueId?: number;
     position?: number;
     points?: number
 }

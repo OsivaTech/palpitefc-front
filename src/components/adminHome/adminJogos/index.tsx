@@ -27,9 +27,9 @@ function JogosComponent() {
             setIsLoading(true)
             const teams = await Api.get('/api/auth/team')
             setTeams(teams)
-            const championship = await Api.get('/api/auth/championship')
+            const championship = await Api.get('/api/auth/league')
             setLigas(championship);
-            const games = await Api.get('/api/auth/game')
+            const games = await Api.get('/api/auth/fixture')
             setGames(games)
             setIsLoading(false)
         })()
@@ -43,8 +43,8 @@ function JogosComponent() {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, index: number, id: number) => {
         const { value } = event.target;
         if (!validateInput(value)) return;
-        if (id === 0) setGames([...games, games[index].firstTeam.gol = Number(value)])
-        if (id === 1) setGames([...games, games[index].secondTeam.gol = Number(value)])
+        if (id === 0) setGames([...games, games[index].homeTeam.goal = Number(value)])
+        if (id === 1) setGames([...games, games[index].awayTeam.goal = Number(value)])
     };
 
     const save = async (idLiga: number, index: number) => {
@@ -53,12 +53,12 @@ function JogosComponent() {
             id: games[index].id,
             name: 'jogo 2',
             championshipId: idLiga,
-            firstTeam: { id: games[index].firstTeam.id, gol: games[index].firstTeam.gol },
-            secondTeam: { id: games[index].secondTeam.id, gol: games[index].secondTeam.gol }
+            firstTeam: { id: games[index].homeTeam.id, gol: games[index].homeTeam.goal },
+            secondTeam: { id: games[index].awayTeam.id, gol: games[index].awayTeam.goal }
         }
-        const response = await Api.post('/api/auth/game', body)
+        const response = await Api.post('/api/auth/fixture', body)
         if (response.id) toast.success('Jogo Salvo com sucesso!')
-        const game = await Api.get('/api/auth/game')
+        const game = await Api.get('/api/auth/fixture')
         setGames(game)
         setEdit(NaN)
         setIsLoading(false)
@@ -72,12 +72,12 @@ function JogosComponent() {
             championshipId: idLiga,
             start: games[index].start,
             finished: true,
-            firstTeam: { id: games[index].firstTeam.id, gol: games[index].firstTeam.gol },
-            secondTeam: { id: games[index].secondTeam.id, gol: games[index].secondTeam.gol }
+            firstTeam: { id: games[index].homeTeam.id, gol: games[index].homeTeam.goal },
+            secondTeam: { id: games[index].awayTeam.id, gol: games[index].awayTeam.goal }
         }
-        const response = await Api.post('/api/auth/game', body)
+        const response = await Api.post('/api/auth/fixture', body)
         if (response.id) toast.success('Jogo finalizado com sucesso!')
-        const game = await Api.get('/api/auth/game')
+        const game = await Api.get('/api/auth/fixture')
         setGames(game)
         setIsLoading(false)
     }
@@ -126,26 +126,26 @@ function JogosComponent() {
             </div>
             <ul className={style.ulPalpite}>
                 {games.map((game, key) => {
-                    if (game.championshipId == ligaSelecionada.id)
+                    if (game.leagueId == ligaSelecionada.id)
                         return (
                             <li key={key} className={style.liPalpite}>
                                 <div className={style.contentContainer}>
                                     <span className={style.spanPalpiteTime}>
-                                        <Image className={style.imgPalpite} src={game.firstTeam && game.firstTeam.name ? handlerImage(game.firstTeam.image !== "" && game.firstTeam.image !== undefined ? game.firstTeam.image : game.firstTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                        <Image className={style.imgPalpite} src={game.homeTeam && game.homeTeam.name ? handlerImage(game.homeTeam.image !== "" && game.homeTeam.image !== undefined ? game.homeTeam.image : game.homeTeam.name) : timeBranco} width={50} height={50} alt="" />
                                         <p className={style.nomeTimeCard}>
-                                            {game.firstTeam && game.firstTeam.name}
+                                            {game.homeTeam && game.homeTeam.name}
                                         </p>
                                     </span>
-                                    <input value={game.firstTeam ? game.firstTeam.gol : 0} onChange={(event) => handleInputChange(event, key, 0)} disabled={editar !== key} className={editar === key ? style.inputPalpite : style.inputPalpiteDisabled}></input>
+                                    <input value={game.homeTeam ? game.homeTeam.goal : 0} onChange={(event) => handleInputChange(event, key, 0)} disabled={editar !== key} className={editar === key ? style.inputPalpite : style.inputPalpiteDisabled}></input>
                                     <div className={style.spanPalpiteX}>
                                         <p>X</p>
                                         <p className={style.pPalpite}>{game.start ? transformaString(game.start) : '00/00/0000, 00:00:00'}</p>
                                     </div>
-                                    <input value={game.secondTeam ? game.secondTeam.gol : 0} onChange={(event) => handleInputChange(event, key, 1)} disabled={editar !== key} className={editar === key ? style.inputPalpite : style.inputPalpiteDisabled}></input>
+                                    <input value={game.awayTeam ? game.awayTeam.goal : 0} onChange={(event) => handleInputChange(event, key, 1)} disabled={editar !== key} className={editar === key ? style.inputPalpite : style.inputPalpiteDisabled}></input>
                                     <span className={style.spanPalpiteTime}>
-                                        <Image className={style.imgPalpite} src={game.secondTeam && game.secondTeam.name ? handlerImage(game.secondTeam.image !== "" && game.firstTeam.image !== undefined ? game.secondTeam.image : game.secondTeam.name) : timeBranco} width={50} height={50} alt="" />
+                                        <Image className={style.imgPalpite} src={game.awayTeam && game.awayTeam.name ? handlerImage(game.awayTeam.image !== "" && game.homeTeam.image !== undefined ? game.awayTeam.image : game.awayTeam.name) : timeBranco} width={50} height={50} alt="" />
                                         <p className={style.nomeTimeCard}>
-                                            {game.secondTeam && game.secondTeam.name}
+                                            {game.awayTeam && game.awayTeam.name}
                                         </p>
                                     </span>
                                 </div>

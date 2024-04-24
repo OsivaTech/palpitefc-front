@@ -14,7 +14,7 @@ function CampeonatoCamponent() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const response = await Api.get('/api/auth/championship')
+            const response = await Api.get('/api/auth/league')
             setChampionships(response);
             setIsLoading(false)
         })()
@@ -24,11 +24,11 @@ function CampeonatoCamponent() {
         if (!championships[key].name) return toast.error('Informe o nome do campeonato')
         setIsLoading(true)
         const body = {
-            championship: championships[key]
+            name: championships[key].name
         }
-        const volta = await Api.post('/api/auth/championship', body)
+        const volta = await Api.post('/api/auth/league', body)
         if (volta.id) toast.success('Campeonato salvo com sucesso')
-        const response = await Api.get('/api/auth/championship')
+        const response = await Api.get('/api/auth/league')
         setChampionships(response);
         setEdit(NaN)
         setIsLoading(false)
@@ -39,10 +39,10 @@ function CampeonatoCamponent() {
         const body = {
             id: championships[key].id
         }
-        const volta = await Api.delete('/api/auth/championship', body)
+        const volta = await Api.delete('/api/auth/league', body)
         if (volta.id) toast.success('Campeonato excluído com sucesso!')
         if (volta.message && volta.message.code == "P2014") toast.error('Campeonato possui jogos cadastrados')
-        const response = await Api.get('/api/auth/championship')
+        const response = await Api.get('/api/auth/league')
         setChampionships(response);
         setEdit(NaN)
         setIsLoading(false)
