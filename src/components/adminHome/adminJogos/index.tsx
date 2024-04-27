@@ -25,11 +25,11 @@ function JogosComponent() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const teams = await Api.get('/api/auth/team')
+            const teams = await Api.get('/api/teams')
             setTeams(teams)
-            const championship = await Api.get('/api/auth/league')
+            const championship = await Api.get('/api/leagues')
             setLigas(championship);
-            const games = await Api.get('/api/auth/fixture')
+            const games = await Api.get('/api/fixtures')
             setGames(games)
             setIsLoading(false)
         })()
@@ -56,9 +56,9 @@ function JogosComponent() {
             firstTeam: { id: games[index].homeTeam.id, gol: games[index].homeTeam.goal },
             secondTeam: { id: games[index].awayTeam.id, gol: games[index].awayTeam.goal }
         }
-        const response = await Api.post('/api/auth/fixture', body)
+        const response = await Api.post('/api/fixtures', body)
         if (response.id) toast.success('Jogo Salvo com sucesso!')
-        const game = await Api.get('/api/auth/fixture')
+        const game = await Api.get('/api/fixtures')
         setGames(game)
         setEdit(NaN)
         setIsLoading(false)
@@ -75,9 +75,9 @@ function JogosComponent() {
             firstTeam: { id: games[index].homeTeam.id, gol: games[index].homeTeam.goal },
             secondTeam: { id: games[index].awayTeam.id, gol: games[index].awayTeam.goal }
         }
-        const response = await Api.post('/api/auth/fixture', body)
+        const response = await Api.post('/api/fixtures', body)
         if (response.id) toast.success('Jogo finalizado com sucesso!')
-        const game = await Api.get('/api/auth/fixture')
+        const game = await Api.get('/api/fixtures')
         setGames(game)
         setIsLoading(false)
     }

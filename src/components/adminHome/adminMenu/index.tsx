@@ -12,7 +12,7 @@ function MenuComponent({setMenu}:any) {
     useEffect(() => { 
         (async() => {
             setIsLoading(true)
-            const role = await Api.get('/api/auth/user')
+            const role = await Api.get('/api/users')
             if(!role.role) return window.location.href = '/'
             setRole(role)
             setIsLoading(false)

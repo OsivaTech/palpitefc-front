@@ -82,7 +82,7 @@ const ModalUpdateUser = ({ displayModalUpdate, toggleUpdate }: any) => {
 
 
     async function updateUser() {
-        const { message, ...response } = await Api.post('api/auth/user', user)
+        const { message, ...response } = await Api.post('api/users', user)
 
         if (message) { return toast.error(message) }
         const end = response && response.info ? response.info.split(',') : [];

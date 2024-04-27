@@ -14,7 +14,7 @@ function AdminHomeInfoComponent() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const { value } = await Api.get('/api/auth/config?name=URLvideo')
+            const { value } = await Api.get('/api/configs?name=URLvideo')
             setUrlVídeo(value)
             setIsLoading(false)
         })()
@@ -28,9 +28,9 @@ function AdminHomeInfoComponent() {
             value: urlVídeo
         }
 
-        const response = await Api.post('/api/auth/config', body)
+        const response = await Api.post('/api/configs', body)
         if (response.id) toast.success('Vídeo adicionado com sucesso!')
-        const { value } = await Api.get('/api/auth/config?name=URLvideo')
+        const { value } = await Api.get('/api/configs?name=URLvideo')
         setUrlVídeo(value)
         setIsLoading(false)
     }

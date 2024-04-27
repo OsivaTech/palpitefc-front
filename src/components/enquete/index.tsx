@@ -12,7 +12,7 @@ function Enquete() {
 
     useEffect(() => {
         (async () => {
-            const res = await Api.get('/api/poll')
+            const res = await Api.get('/api/polls')
             setEnquete(res)
         })()
     }, [])
@@ -23,7 +23,7 @@ function Enquete() {
 
     async function sendVote(clicked: any) {
         const vote = { id: clicked }
-        const { message, ...res } = await Api.post('/api/auth/option', vote)
+        const { message, ...res } = await Api.post('/api/polls/vote', vote)
         if (message) { return toast.error('Faça login para poder votar') }
         setVotos(res.options)
         setCount(count + 1)

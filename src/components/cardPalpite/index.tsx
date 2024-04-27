@@ -28,8 +28,8 @@ function CardPalpite() {
     useEffect(() => {
         (async () => {
             const [championships, games] = await Promise.all([
-                Api.get('/api/league'),
-                Api.get('/api/fixture'),
+                Api.get('/api/leagues'),
+                Api.get('/api/fixtures'),
             ]);
             setGames(games); setChampionships(championships);
             // setLoading(false);
@@ -79,7 +79,7 @@ function CardPalpite() {
             return toast.error('Jogo já começou ou está em andamento, você não pode enviar um palpite')
         } else {
             // O jogo ainda não começou, pode enviar o palpite
-            const { message, ...res } = await Api.post('/api/auth/guess', myObj)
+            const { message, ...res } = await Api.post('/api/guesses', myObj)
             if (message) { return toast.error('Faça login para enviar seu palpite') }
             return toast.success(`Palpite enviado! Boa sorte!`)
         }
@@ -87,8 +87,8 @@ function CardPalpite() {
 
     async function attListFunc() {
         const [championships, games] = await Promise.all([
-            Api.get('/api/league'),
-            Api.get('/api/fixture'),
+            Api.get('/api/leagues'),
+            Api.get('/api/fixtures'),
         ]);
         setGames(games); setChampionships(championships);
         setGamesExhibition(0)
@@ -158,7 +158,7 @@ function CardPalpite() {
     const clubes = []
 
     // function recebeIndex(x: any){
-    //     Api.post('/api/auth/team', {team: {name: `${x}`}})
+    //     Api.post('/api/teams', {team: {name: `${x}`}})
     // }
 
     // function salvaTime(){

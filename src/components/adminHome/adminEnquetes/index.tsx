@@ -15,7 +15,7 @@ function AdminEnquetesComponents() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const votes = await Api.get('/api/auth/poll')
+            const votes = await Api.get('/api/polls')
             setVote(votes)
             setIsLoading(false)
         })()
@@ -30,7 +30,7 @@ function AdminEnquetesComponents() {
         if(validaTitle) return toast.error('Insira pelo menos duas opções válidas')
         setIsLoading(true)
         const body = votes[indexVote]
-        const response = await Api.post('/api/auth/poll', body)
+        const response = await Api.post('/api/polls', body)
         if (response.id) toast.success('Enquete criada com sucesso!')
         if(!votes[indexVote].id) {
             for (let i = 0; i < options.length; i++) {
@@ -39,10 +39,10 @@ function AdminEnquetesComponents() {
                     title: element.title,
                     voteId: response.id
                 };
-                await Api.post('/api/auth/option', body);
+                await Api.post('/api/options', body);
             }
         }
-        const responseVote = await Api.get('/api/auth/poll')
+        const responseVote = await Api.get('/api/polls')
         setVote(responseVote)
         setEdit(NaN)
         setIsLoading(false)
@@ -50,9 +50,9 @@ function AdminEnquetesComponents() {
 
     async function del(indexVote: number, indexOption: number) {
         const id = votes[indexVote].id
-        const response = await Api.delete(`api/auth/poll?id=${id}`)
+        const response = await Api.delete(`api/polls?id=${id}`)
         if (response.id) toast.success('Enquete excluída com sucesso!')
-        const responseVote = await Api.get('/api/auth/poll')
+        const responseVote = await Api.get('/api/polls')
         setVote(responseVote)
         setEdit(NaN)
         setIsLoading(false)

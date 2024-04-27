@@ -22,7 +22,7 @@ function AdminUserComponent() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const response = await Api.get('/api/user')
+            const response = await Api.get('/api/users')
             setUsers(response)
             setIsLoading(false)
             setWidth(window.innerWidth)
@@ -41,9 +41,9 @@ function AdminUserComponent() {
         const body = {
             ...editUser
         }
-        const volta = await Api.post('/api/auth/user', body)
+        const volta = await Api.post('/api/users', body)
         if(volta.id) toast.success(' Usuário salvo com sucesso')
-        const response = await Api.get('/api/user')
+        const response = await Api.get('/api/users')
         setUsers(response)
         setEdit(false)
         setIsLoading(false)

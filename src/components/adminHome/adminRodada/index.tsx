@@ -34,11 +34,11 @@ function RodadaComponent() {
         (async () => {
             setWidth(window.innerWidth)
             setIsLoading(true)
-            const teams = await Api.get('/api/auth/team')
+            const teams = await Api.get('/api/teams')
             setTeams(teams)
-            const championship = await Api.get('/api/auth/league')
+            const championship = await Api.get('/api/leagues')
             setLigas(championship);
-            const games = await Api.get('/api/auth/fixture')
+            const games = await Api.get('/api/fixtures')
             setGames(games)
             setIsLoading(false)
         })()
@@ -61,10 +61,10 @@ function RodadaComponent() {
         const body = {
             id: games[key].id
         }
-        const response = await Api.delete('/api/auth/fixture', body)
+        const response = await Api.delete('/api/fixtures', body)
         if (response.id) toast.success('Jogo excluído com sucesso!')
         if (!response.id) toast.error('Houve um problema ao excluir o jogo')
-        const game = await Api.get('/api/auth/fixture')
+        const game = await Api.get('/api/fixtures')
         setGames(game);
         setEdit(NaN);
         setIsLoading(false)
@@ -82,10 +82,10 @@ function RodadaComponent() {
             firstTeam: { id: games[index].homeTeam.id, gol: 0 },
             secondTeam: { id: games[index].awayTeam.id, gol: 0 }
         }
-        const response = await Api.post('/api/auth/fixture', body)
+        const response = await Api.post('/api/fixtures', body)
         if (response.id) toast.success('Jogo Salvo com sucesso!')
         if (!response.id) toast.error('Houve um problema ao salvar o jogo')
-        const game = await Api.get('/api/auth/fixture')
+        const game = await Api.get('/api/fixtures')
         setGames(game)
         setEdit(NaN)
         setIsLoading(false)

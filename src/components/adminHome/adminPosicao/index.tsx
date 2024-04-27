@@ -36,11 +36,11 @@ function PosicaoComponent() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const teams = await Api.get('/api/auth/team')
+            const teams = await Api.get('/api/teams')
             setTeams(teams)
-            const championship = await Api.get('/api/auth/league')
+            const championship = await Api.get('/api/leagues')
             setLigas(championship);
-            const teamsPositions = await Api.get('/api/auth/standing')
+            const teamsPositions = await Api.get('/api/standings')
             setTeamsPositions(teamsPositions)
             setIsLoading(false)
         })()
@@ -89,7 +89,7 @@ function PosicaoComponent() {
 
     async function saveTeamChampionship(index: any) {
         if (!teamsPositions[index].teamId) {
-            const getTeamsPositions = await Api.get('/api/auth/standing')
+            const getTeamsPositions = await Api.get('/api/standings')
             setTeamsPositions(getTeamsPositions)
             setEdit(NaN)
             return
@@ -102,10 +102,10 @@ function PosicaoComponent() {
             position: 0,
             points: 0
         }
-        const response = await Api.post('/api/auth/standing', body)
+        const response = await Api.post('/api/standings', body)
         if (response?.id) toast.success('Jogo Salvo com sucesso!')
         if (!response?.id) toast.error('Houve um problema ao salvar o jogo')
-        const getTeamsPositions = await Api.get('/api/auth/standing')
+        const getTeamsPositions = await Api.get('/api/standings')
         setTeamsPositions(getTeamsPositions)
         setEdit(NaN)
         setIsLoading(false)
@@ -124,13 +124,13 @@ function PosicaoComponent() {
                         position: teamPosition.position,
                         points: teamPosition.points
                     }
-                    response = await Api.post('/api/auth/standing', body)
+                    response = await Api.post('/api/standings', body)
                 }
             }
         }
         if (response.id) toast.success('Jogo Salvo com sucesso!')
         if (!response.id) toast.error('Houve um problema ao salvar o jogo')
-        const getTeamsPositions = await Api.get('/api/auth/standing')
+        const getTeamsPositions = await Api.get('/api/standings')
         setTeamsPositions(getTeamsPositions)
         setEditarPosicao(false)
         setIsLoading(false)

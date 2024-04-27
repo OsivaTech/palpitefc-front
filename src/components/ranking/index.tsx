@@ -13,7 +13,7 @@ function Ranking() {
 
     useEffect(() => {
         (async () => {
-            const res = await Api.get('/api/ranking')
+            const res = await Api.get('/api/rankings')
             setUsers(res);
         })()
 

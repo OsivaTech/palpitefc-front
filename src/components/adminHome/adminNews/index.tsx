@@ -19,7 +19,7 @@ function NewsComponent() {
     useEffect(() => {
         (async () => {
             setIsLoading(true)
-            const news = await Api.get('/api/auth/news')
+            const news = await Api.get('/api/news')
             setNews(news)
             setIsLoading(false)
         })()
@@ -35,16 +35,14 @@ function NewsComponent() {
         const getCookie: any = await Cookie.get('user')
         const user = JSON.parse(getCookie);
         const body = {
-            news: {
-                id: newsEdit.id ? newsEdit.id : undefined,
-                title: newsEdit.title,
-                content: newsEdit.content,
-                userId: Number(user.id),
-            }
+            id: newsEdit.id ? newsEdit.id : undefined,
+            title: newsEdit.title,
+            content: newsEdit.content,
+            userId: Number(user.id),
         }
-        const response = await Api.post('/api/auth/news', body)
+        const response = await Api.post('/api/news', body)
         if (response.id) toast.success('Notícia salva com sucesso!')
-        const news = await Api.get('/api/auth/news')
+        const news = await Api.get('/api/news')
         setNews(news)
         setNewsEdit({ id: NaN, title: '', content: '' })
         setEdit(false)
@@ -60,9 +58,9 @@ function NewsComponent() {
         const body = {
             id: newsEdit.id
         }
-        const response = await Api.delete('/api/auth/news', body)
+        const response = await Api.delete('/api/news', body)
         if (response.id) toast.success('Notícia excluída com sucesso!')
-        const news = await Api.get('/api/auth/news')
+        const news = await Api.get('/api/news')
         setNews(news)
         setNewsEdit({ id: NaN, title: '', content: '' })
         setEdit(false)
