@@ -21,9 +21,8 @@ function Enquete() {
         setProx(!prox)
     }
 
-    async function sendVote(clicked: any) {
-        const vote = { id: clicked }
-        const { message, ...res } = await Api.post('/api/polls/vote', vote)
+    async function sendVote(enquete: any, clicked: any) {
+        const { message, ...res } = await Api.post(`/api/polls/${enquete.id}/vote/${clicked}`)
         if (message) { return toast.error('Faça login para poder votar') }
         setVotos(res.options)
         setCount(count + 1)
@@ -62,7 +61,7 @@ function Enquete() {
                                 </div>
                                 <textarea disabled name="" id="" cols={10} rows={2} value={enq.title} />
                                 {enq.options?.map((opt: any, key: any) => (
-                                    <button key={key} type="button" className={style.btnEnquete} onClick={() => sendVote(opt.id)}>
+                                    <button key={key} type="button" className={style.btnEnquete} onClick={() => sendVote(enq, opt.id)}>
                                         <h4> {opt.title} </h4>
                                         {hasPercentage && (votos.find((option: any) => option.id === opt.id)?.percentage || 0) > 0 && (
                                             <h5>{(votos.find((option: any) => option.id === opt.id)?.percentage || 0).toFixed(2)}%</h5>
@@ -81,7 +80,7 @@ function Enquete() {
                                 </div>
                                 <textarea disabled name="" id="" cols={10} rows={2} value={enq.title} />
                                 {enq.options?.map((opt: any, key: any) => (
-                                    <button key={key} type="button" className={style.btnEnquete} onClick={() => sendVote(opt.id)}>
+                                    <button key={key} type="button" className={style.btnEnquete} onClick={() => sendVote(enq, opt.id)}>
                                         <h4> {opt.title} </h4>
                                         {hasPercentage && (votos.find((option: any) => option.id === opt.id)?.percentage || 0) > 0 && (
                                             <h5>{(votos.find((option: any) => option.id === opt.id)?.percentage || 0).toFixed(2)}%</h5>

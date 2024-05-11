@@ -59,14 +59,14 @@ function CardPalpite() {
 
     const sendPalpite = async (objPalpite: objPalpiteType) => {
         const myObj = {
-            gameId: objPalpite.id,
-            firstTeam: {
+            fixtureId: objPalpite.id,
+            homeTeam: {
                 id: objPalpite.homeTeamId,
-                gol: objPalpite.mandante
+                goals: objPalpite.mandante
             },
-            secondTeam: {
+            awayTeam: {
                 id: objPalpite.awayTeamId,
-                gol: objPalpite.visitante
+                goals: objPalpite.visitante
             }
         }
 
